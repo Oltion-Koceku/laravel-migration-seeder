@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Train;
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 
 class TrainsTableSeeder extends Seeder
 {
@@ -17,6 +18,7 @@ class TrainsTableSeeder extends Seeder
         for ($i=0; $i < 100; $i++) {
             $new_train = new Train();
             $new_train->agency = $faker->name();
+            $new_train->slug = $this->generateSlug($new_train->agency);
             $new_train->departure_station = $faker->word(2, true);
             $new_train->arrival_station = $faker->word(2, true);
             $new_train->departure_time = $faker->time();
@@ -27,5 +29,11 @@ class TrainsTableSeeder extends Seeder
 
         }
     }
+
+    private function generateSlug($string){
+        return Str::slug($string);
+    }
 }
+
+
 
