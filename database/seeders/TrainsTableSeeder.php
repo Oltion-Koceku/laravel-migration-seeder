@@ -34,7 +34,21 @@ class TrainsTableSeeder extends Seeder
     }
 
     private function generateSlug($string){
-        return Str::slug($string);
+
+        $slug = Str::slug($string, '-');
+
+        $original = $slug;
+        $exist = Train::where('slug', $slug)->first();
+        $i = 1;
+
+        while ($exist) {
+            $slug = $original . '-' . $i;
+            $exist = Train::where('slug', $slug)->first();
+            $i++;
+
+        }
+
+        return $slug;
     }
 }
 
