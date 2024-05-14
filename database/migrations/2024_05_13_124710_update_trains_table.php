@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('trains', function (Blueprint $table){
-           $table->text('desciption')->after('train_number');
+           $table->text('desciption')->nullable()->after('train_number');
            $table->boolean('deleted')->default(false)->after('in_time');
 
         });
