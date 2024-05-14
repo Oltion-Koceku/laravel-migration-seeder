@@ -1,6 +1,14 @@
 <header>
-    <h1>Header</h1>
 
-    <a href="{{route('home')}}">Home</a>
-    <a href="{{route('nuova-pagina')}}">Nuova Pagina</a>
+
+    <ul class="nav container">
+
+        <li class="nav-item mx-4 ">
+            <a href="{{route('home')}}">Home</a>
+        </li>
+        <li class="nav-item">
+            <a href="{{route('train')}}">I treni </a>
+        </li>
+
+      </ul>
 </header>
